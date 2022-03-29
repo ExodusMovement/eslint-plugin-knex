@@ -31,6 +31,7 @@ tester.run("avoid-injections", rule, {
     "knex('users').whereRaw(`id = 1`);",
     "const joinCondition = `blog_posts ON users.id = blog_posts.author`; knex('users').select(['email']).joinRaw(joinCondition)",
     `function sharp() { return { raw: () => {}, }; } sharp().raw();`,
+    "const wrapQuery = (query, args) => knex.raw(query, args);",
     {
       code: "knex('users').whereRaw(`id = ` + id);",
       settings: {
@@ -50,6 +51,10 @@ tester.run("avoid-injections", rule, {
     ]),
     invalidCase(
       "const email = 'user@domain.com'; const query = `SELECT * FROM users WHERE email='${email}'`; function run() { knex.raw(query); }",
+      [{ messageId: "avoid", data: { query: "raw" } }],
+    ),
+    invalidCase(
+      'const wrapQuery = (query, args) => knex.raw(query, args); wrapQuery("select * from " + table, null)',
       [{ messageId: "avoid", data: { query: "raw" } }],
     ),
 
