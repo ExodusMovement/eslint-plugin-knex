@@ -64,6 +64,7 @@ function check(context, node) {
     if (!variableDefinition) return;
 
     const queryVariableDefinition = variableDefinition.defs[0].node;
+    if (!queryVariableDefinition.init) return;
 
     if (
       queryVariableDefinition.init.type === "Literal" ||
