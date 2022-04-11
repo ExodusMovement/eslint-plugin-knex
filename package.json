@@ -11,7 +11,9 @@
     "eslintplugin",
     "knex"
   ],
-  "files": [],
+  "files": [
+    "rules/avoid-injections.js"
+  ],
   "main": "index.js",
   "license": "MIT",
   "scripts": {
