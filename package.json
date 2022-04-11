@@ -11,6 +11,7 @@
     "eslintplugin",
     "knex"
   ],
+  "files": [],
   "main": "index.js",
   "license": "MIT",
   "scripts": {
