@@ -5,8 +5,8 @@
 ## Installation
 
 ```
-npm install -D eslint-plugin-knex
-yarn add -D eslint-plugin-knex
+npm install -D @exodus/eslint-plugin-knex
+yarn add -D @exodus/eslint-plugin-knex
 ```
 
 ## Usage
@@ -15,7 +15,7 @@ In your eslint config file:
 
 ```
 {
-  "plugins": ["knex"],
+  "plugins": ["@exodus/eslint-plugin-knex"],
   "rules": {
     "knex/avoid-injections": "error"
   }
@@ -32,7 +32,8 @@ include the library itself (`knex`), but also transaction variables (`trx`,
 {
   "settings": {
     "knex": {
-      "builderName": "^(knex|transaction)$"
+      "builderName": "^(knex|transaction)$",
+      "rawStatements": "/^(raw|whereRaw|joinRaw|wrapQuery)$/",
     }
   }
 }
