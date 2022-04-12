@@ -17,7 +17,7 @@ In your eslint config file:
 {
   "plugins": ["@exodus/eslint-plugin-knex"],
   "rules": {
-    "knex/avoid-injections": "error"
+    "@exodus/knex/avoid-injections": "error"
   }
 }
 ```
